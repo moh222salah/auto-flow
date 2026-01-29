@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ AI  Magic Flow  ⚡
+# ⚡ AI  Auto Flow  ⚡
 
 
 
