@@ -1623,6 +1623,8 @@ function initMobileMenu() {
     });
 }
 
+
+
 // === Smooth Scroll ===
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1639,8 +1641,203 @@ function initSmoothScroll() {
     });
 }
 
-
-             
+// === Workflow Modals - COMPLETE DATA ===
+const workflowsData = {
+    1: {
+        title: "Lead Qualification & Distribution",
+        icon: "🎯",
+        gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        description: "Imagine never losing a potential customer again. Your leads are automatically analyzed, scored, and delivered to the perfect salesperson - all in under 5 minutes. While your competitors are still manually sorting through spreadsheets, you're already closing deals.",
+        marketingPitch: "⚡ Stop Watching Money Slip Away! Every minute a lead waits is money lost. Your competitors respond in hours - you'll respond in minutes. Transform your sales team into a high-performance machine that never sleeps, never forgets, and never lets a hot lead go cold.",
+        features: [
+            "Lightning-Fast Response: Your team contacts leads within 5 minutes, not 4 hours",
+            "Smart Matching: Every lead goes to the salesperson most likely to close the deal",
+            "Zero Manual Work: No more spreadsheets, no more guessing, no more lost opportunities",
+            "Fair Distribution: Your team gets balanced workloads based on performance and capacity",
+            "Instant Notifications: Get alerts via Slack, Email, or SMS the second a hot lead arrives",
+            "Rich Data: Every lead comes with company info, social profiles, and buying signals"
+        ],
+        realWorldImpact: [
+            "A software company increased sales by 45% in 90 days - same team, same budget",
+            "Real estate agency closed 3 extra deals per month worth $180,000 in commissions",
+            "Insurance broker reduced response time from 6 hours to 3 minutes - conversion rate doubled",
+            "Marketing agency eliminated lead assignment conflicts that cost them $50k annually"
+        ],
+        benefits: [
+            "45% higher conversion rates - more deals closed from the same number of leads",
+            "85% faster response time - be first to contact while others are still checking email",
+            "15 hours saved weekly - your sales team focuses on selling, not admin work",
+            "Zero leads lost - every single inquiry gets immediate attention and follow-up",
+            "Complete transparency - track every lead from entry to close with full analytics"
+        ]
+    },
+    2: {
+        title: "AI Document Processing & Analysis",
+        icon: "📄",
+        gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        description: "Your team spends hours typing data from documents into systems. Imagine if that work happened instantly, perfectly, 24/7. Our AI reads invoices, contracts, forms - anything with text - and extracts every detail with 99.9% accuracy. What took a day now takes 30 seconds.",
+        marketingPitch: "💸 Stop Burning Money on Manual Data Entry! Your employees are too valuable to spend their days typing. One person doing data entry costs you $30,000+ yearly. Our AI processes 1,000 documents in the time it takes to drink your coffee - with zero errors and zero fatigue.",
+        features: [
+            "Instant Processing: 1,000 documents processed in minutes, not days or weeks",
+            "Perfect Accuracy: 99.9% accuracy means no costly mistakes or rework",
+            "Smart Understanding: Recognizes invoices, contracts, receipts, forms automatically",
+            "Any Language: Works with 50+ languages including handwritten text",
+            "Automatic Filing: Documents sorted and stored exactly where they belong",
+            "Seamless Integration: Feeds directly into your accounting, CRM, or ERP systems"
+        ],
+        realWorldImpact: [
+            "Accounting firm eliminated 3 full-time data entry positions - saving $120,000 annually",
+            "Law office processes 500 contracts monthly instead of 50 - 10x capacity increase",
+            "Healthcare clinic digitized 10 years of patient records in just 2 weeks",
+            "Government agency reduced application processing time from 30 days to 4 hours"
+        ],
+        benefits: [
+            "90% faster processing - finish in hours what used to take weeks",
+            "95% cost reduction - stop paying humans to do robot work",
+            "Zero errors - eliminate the typos, missed fields, and costly mistakes",
+            "24/7 operation - documents processed any time, day or night",
+            "Scale infinitely - handle 10x more documents without hiring anyone"
+        ]
+    },
+    3: {
+        title: "Decision Logic & Smart Routing",
+        icon: "🧠",
+        gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+        description: "Stop relying on humans to make routing decisions that should be instant and perfect. Our AI analyzes every request, applies complex business rules in milliseconds, and routes it to exactly the right person or system. What used to cause confusion and delays now happens automatically and flawlessly.",
+        marketingPitch: "🎯 End the Chaos of Misdirected Work! Every misdirected ticket, misrouted order, or wrong assignment costs you time, money, and customer satisfaction. While others play email ping-pong, your system makes perfect decisions instantly. Your customers get help faster, your team works smarter, and your business runs like clockwork.",
+        features: [
+            "Instant Decisions: Complex routing that takes humans minutes happens in milliseconds",
+            "Zero Mistakes: AI never forgets a rule, never plays favorites, never makes errors",
+            "Smart Learning: Gets better over time by learning from outcomes",
+            "Perfect Balance: Distributes work evenly based on capacity and skill",
+            "Automatic Escalation: Critical issues get immediate priority attention",
+            "Complete Visibility: See exactly why every decision was made"
+        ],
+        realWorldImpact: [
+            "IT helpdesk cut ticket resolution time by 60% - users get help 3x faster",
+            "Customer service team achieved 94% first-contact resolution - up from 52%",
+            "Operations team eliminated 85% of routing errors that caused delays",
+            "Financial services company processes loan applications 5x faster"
+        ],
+        benefits: [
+            "95% fewer routing errors - work goes to the right person first time, every time",
+            "60% faster response - eliminate the back-and-forth of wrong assignments",
+            "Zero favoritism - fair, logical distribution based on data, not politics",
+            "Automatic priority - urgent work gets immediate attention without human judgment",
+            "Real-time insights - understand your workflow patterns and optimize continuously"
+        ]
+    },
+    4: {
+        title: "Real-time Notifications System",
+        icon: "🔔",
+        gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        description: "Critical information shouldn't wait in email inboxes. When something important happens, everyone who needs to know finds out instantly - through their preferred channel, at the right time, with the right priority. SMS for emergencies, Email for details, Slack for team updates. All automatic, all instant, all reliable.",
+        marketingPitch: "⚡ Never Miss a Critical Moment Again! That emergency that took 4 hours to communicate? Now it takes 4 seconds. That important update buried in 200 emails? Now it's an instant SMS. Stop losing money because information moved too slowly. In business, seconds matter - and we deliver in milliseconds.",
+        features: [
+            "Multi-Channel: Email, SMS, Slack, Teams, WhatsApp - use what your people actually check",
+            "Smart Timing: Respects time zones, work hours, and personal preferences automatically",
+            "Priority Routing: Emergencies via SMS, updates via email, FYIs via Slack",
+            "Perfect Delivery: 99.9% delivery success with automatic retries",
+            "Rich Content: Send links, images, data, actions - not just text",
+            "Track Everything: Know exactly who received, read, and acted on each message"
+        ],
+        realWorldImpact: [
+            "E-commerce store reduced cart abandonment by 35% with instant order updates",
+            "Bank stopped $2M in fraud by alerting customers within seconds of suspicious activity",
+            "Hospital reduced patient no-shows by 60% with timely appointment reminders",
+            "Tech company decreased incident response time from 30 minutes to 30 seconds"
+        ],
+        benefits: [
+            "99.9% delivery rate - your critical messages always get through",
+            "Sub-second speed - information reaches people faster than email can load",
+            "Zero missed alerts - automatic fallback if first channel fails",
+            "Perfect timing - messages arrive when people can actually act on them",
+            "Complete tracking - prove compliance, measure engagement, optimize delivery"
+        ]
+    },
+    5: {
+        title: "Bi-Directional Data Synchronization",
+        icon: "🔄",
+        gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        description: "Your data lives in dozens of places - CRM, accounting, inventory, e-commerce, spreadsheets. Every day, someone manually copies data between them, introducing errors and wasting hours. What if all your systems stayed perfectly in sync, automatically, in real-time? That's what we build.",
+        marketingPitch: "🔥 Stop Fighting with Duplicate Data Entry! Your team wastes 20+ hours weekly copying data between systems. One typo cascades into inventory errors, billing mistakes, and angry customers. While you're reconciling spreadsheets, competitors with automated sync are already serving their next customer.",
+        features: [
+            "Real-time Sync: Changes in one system appear in all others within seconds",
+            "Bi-directional: Data flows both ways - no more one-way exports",
+            "Conflict Resolution: Smart handling when the same data changes in multiple places",
+            "Field Mapping: Automatically translates data between different system formats",
+            "Error Recovery: Never loses data even if a system temporarily goes offline",
+            "Audit Trail: Complete history of every sync operation for compliance"
+        ],
+        realWorldImpact: [
+            "E-commerce business eliminated overselling by syncing inventory across 5 platforms",
+            "Service company cut billing errors by 95% with CRM-to-accounting sync",
+            "Manufacturer reduced order processing time from 4 hours to 5 minutes",
+            "Distributor eliminated $250k in annual reconciliation costs"
+        ],
+        benefits: [
+            "100% data accuracy - one source of truth across all systems",
+            "Zero manual entry - stop paying people to copy and paste",
+            "Real-time updates - everyone sees the same current data always",
+            "Scale freely - add new systems without adding sync work",
+            "Sleep better - no more weekend fire drills fixing data mismatches"
+        ]
+    },
+    6: {
+        title: "AI-Powered Customer Support",
+        icon: "💬",
+        gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+        description: "Your customers deserve instant answers, 24/7, in their language. Our AI chatbot handles 85% of inquiries automatically with human-like understanding, only escalating to your team when truly needed. Your team focuses on complex issues while the AI handles the routine stuff perfectly.",
+        marketingPitch: "💪 Why Pay Humans to Answer the Same 10 Questions All Day? Your support team is talented - why waste them on 'What are your hours?' and 'How do I reset my password?' Let AI handle the repetitive stuff while your team tackles the interesting challenges. Your customers get instant help, your team stays motivated, and your costs plummet.",
+        features: [
+            "Natural Understanding: Comprehends intent, handles typos, understands context",
+            "50+ Languages: Automatically detects and responds in customer's language",
+            "Smart Escalation: Knows when to hand off to a human seamlessly",
+            "Learning System: Gets smarter from every conversation",
+            "Omnichannel: Works on website, mobile app, Facebook, WhatsApp, SMS",
+            "Rich Responses: Can search knowledge base, check orders, process requests"
+        ],
+        realWorldImpact: [
+            "SaaS company reduced support costs by $180k annually while improving satisfaction scores",
+            "Retailer handles Black Friday traffic with zero additional support staff",
+            "Bank resolved 92% of password resets automatically - used to be 100% human-handled",
+            "Healthcare provider answers 10,000 appointment questions monthly with no staff increase"
+        ],
+        benefits: [
+            "85% automatic resolution - handle vastly more inquiries with same team size",
+            "24/7 availability - customers get help at 3 AM on Christmas",
+            "Sub-second response - no more 'please hold for 15 minutes'",
+            "Zero turnover - AI doesn't quit, call in sick, or need training",
+            "Complete analytics - understand common issues and optimize proactively"
+        ]
+    },
+    7: {
+        title: "Social Media Management & Automation",
+        icon: "📱",
+        gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        description: "Social media demands constant attention - posting, responding, analyzing, reporting. What if your social presence ran itself? Schedule content, auto-respond to messages, track mentions, analyze sentiment, and generate reports - all automated. Your brand stays active 24/7 while you focus on strategy.",
+        marketingPitch: "📢 Your Competitors Post 10x More Than You - Here's How to Catch Up! They're not superhuman, they're automated. While you manually craft one post, automated businesses publish 10 across all platforms, respond to every mention instantly, and track every metric. Stop losing followers to competitors who never sleep.",
+        features: [
+            "Smart Scheduling: Post optimal times for each platform automatically",
+            "Auto-Response: Instant replies to common messages and comments",
+            "Sentiment Analysis: Know how people really feel about your brand",
+            "Trend Detection: Identifies viral opportunities in real-time",
+            "Competitor Tracking: Monitor what competitors are doing",
+            "Unified Dashboard: Manage all platforms from one place"
+        ],
+        realWorldImpact: [
+            "Restaurant chain increased engagement 400% while reducing social media team by 60%",
+            "E-commerce brand went from 1 post daily to 12 without hiring anyone",
+            "Tech startup identified and responded to 250 brand mentions daily automatically",
+            "Agency manages 50 client accounts with a team that used to handle 10"
+        ],
+        benefits: [
+            "10x more content - maintain active presence across all platforms",
+            "75% time saved - stop spending 20 hours weekly on social media",
+            "Zero missed mentions - respond to every customer within minutes",
+            "Perfect timing - posts automatically publish when your audience is most active",
+            "Data-driven decisions - understand what content performs best and why"
+        ]
     },
     8: {
         title: "Smart Inventory Management",
@@ -1668,11 +1865,7 @@ function initSmoothScroll() {
             "90% less waste - stop throwing away expired or obsolete inventory",
             "Improved cash flow - your money isn't sitting in a warehouse",
             "Supplier optimization - automatically get best prices and terms"
-        ],
-        pricing: {
-            egypt: "EGP 0000",
-            gulf: "$ 0000"
-        }
+        ]
     },
     9: {
         title: "Financial Reconciliation Automation",
@@ -1700,11 +1893,7 @@ function initSmoothScroll() {
             "Immediate fraud detection - catch problems before they become expensive",
             "Real-time books - know your financial position any time, not just month-end",
             "Team satisfaction - your accountants do interesting analysis, not data matching"
-        ],
-        pricing: {
-            egypt: "EGP 0000",
-            gulf: "$ 0000"
-        }
+        ]
     },
     10: {
         title: "HR Onboarding Automation",
@@ -1732,11 +1921,7 @@ function initSmoothScroll() {
             "100% compliance - never miss a required form or document",
             "Zero setup failures - accounts, equipment, training all completed correctly",
             "HR freed up - focus on culture and development, not paperwork"
-        ],
-        pricing: {
-            egypt: "EGP 0000",
-            gulf: "$ 0000"
-        }
+        ]
     }
 };
 
@@ -1808,25 +1993,6 @@ function createModal(id, data) {
                     </ul>
                 </div>
                 
-                <div class="modal-section">
-                    <h3 class="modal-section-title">💰 Investment & Returns</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="glass-card" style="padding: 1.5rem; text-align: center;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇪🇬</div>
-                            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Egypt Market</div>
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">${data.pricing.egypt}</div>
-                        </div>
-                        <div class="glass-card" style="padding: 1.5rem; text-align: center;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇸🇦🇦🇪</div>
-                            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Gulf Market</div>
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--secondary-color);">${data.pricing.gulf}</div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-secondary); text-align: center; font-style: italic;">
-                        ✅ Includes complete development, integration, testing, training, and 3-6 months premium support
-                    </p>
-                </div>
-                
                 <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15)); padding: 2rem; border-radius: 20px; margin-top: 2rem; text-align: center; border: 2px solid var(--glass-border);">
                     <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                         🚀 Ready to Transform Your Business?
@@ -1881,8 +2047,10 @@ function closeAllModals() {
 window.openWorkflowModal = openWorkflowModal;
 window.closeModal = closeModal;
 
-console.log('🚀 AI Workflow Automation Hub - Initialized Successfully');
+console.log('🚀 AI Magic Flow - Initialized Successfully');
 
          </script>
 </body>
 </html>
+
+             
